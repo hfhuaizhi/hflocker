@@ -1,18 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".activity.MainActivity">
+
+    <Switch
+        android:id="@+id/sw_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="开关" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="20dp"
+        android:text="睡觉时间："
+        android:textColor="@color/black"
+        android:textSize="18dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.hfhuaizhi.hflocker.view.ChooseTimeView
+        android:id="@+id/ctv_sleep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="起床时间："
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+    <com.hfhuaizhi.hflocker.view.ChooseTimeView
+        android:id="@+id/ctv_wake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="tips: '睡觉时间'和'起床时间'之间将无法使用手机" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="20dp"
+        android:background="#aaaaaa"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="必备权限："
+        android:textColor="#FF0000" />
+
+    <com.hfhuaizhi.hflocker.view.SlideProcessView
+        android:id="@+id/permission_float"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:elevation="3dp"
+        app:permission_closeable="false"
+        app:permission_content="用于悬浮在其他界面之上"
+        app:permission_title="悬浮窗权限" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="可选权限："
+        android:textColor="#DD8800" />
+
+    <com.hfhuaizhi.hflocker.view.SlideProcessView
+        android:id="@+id/permission_acc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:elevation="3dp"
+        app:permission_closeable="false"
+        app:permission_content="用于后台保活"
+        app:permission_title="辅助功能无障碍权限" />
+
+</LinearLayout>

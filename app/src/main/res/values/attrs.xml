@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SlideProcessView">
+        <attr name="permission_title" format="string" />
+        <attr name="permission_content" format="string" />
+        <attr name="permission_closeable" format="boolean" />
+    </declare-styleable>
+</resources>
