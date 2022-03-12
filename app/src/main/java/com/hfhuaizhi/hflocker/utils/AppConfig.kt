@@ -9,6 +9,7 @@ import com.hfhuaizhi.hflocker.app.LockerApplication
 object AppConfig {
     private const val SLEEP_TIME = "SLEEP_TIME"
     private const val WAKEUP_TIME = "WAKEUP_TIME"
+    private const val FUNC_SWITCH = "func_switch"
     private val mContext: Context = LockerApplication.context
     var sleepTime: Int
         get() = SpUtil.getInt(mContext, SLEEP_TIME, 4)
@@ -23,4 +24,12 @@ object AppConfig {
             MemoCache.sleepTime = value
             SpUtil.putInt(mContext, WAKEUP_TIME, value)
         }
+
+    var funcSwitch: Boolean
+        get() = SpUtil.getBoolean(mContext,FUNC_SWITCH,false)
+        set(value) {
+            MemoCache.funcSwitch = value
+            SpUtil.putBoolean(mContext, FUNC_SWITCH, value)
+        }
+
 }

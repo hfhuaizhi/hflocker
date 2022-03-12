@@ -47,12 +47,14 @@ class MainActivity : AppCompatActivity() {
             if (isChecked) {
                 if (PermissionUtil.checkAlertWindowsPermission(this)) {
                     LockerService.startService(applicationContext)
+                    AppConfig.funcSwitch = true
                 } else {
                     Toast.makeText(applicationContext, "请先开启必要权限", Toast.LENGTH_SHORT).show()
                     sw_main.isChecked = false
                 }
             } else {
                 SlideActionManager.sendAction(LockerService.STOP_SELF)
+                AppConfig.funcSwitch = false
             }
         }
     }

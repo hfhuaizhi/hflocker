@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.accessibility.AccessibilityEvent
+import com.hfhuaizhi.hflocker.utils.MemoCache
 import com.hfhuaizhi.hflocker.utils.SlideActionHandler
 import com.hfhuaizhi.hflocker.utils.SlideActionManager
 import com.hfhuaizhi.hflocker.utils.WindowManagerWrapper
@@ -34,8 +35,6 @@ class LockerAccessibilityService : AccessibilityService() {
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
         try {
             checkAndStartService()
-
-
         } catch (e: Throwable) {
             e.printStackTrace()
         }
@@ -52,6 +51,11 @@ class LockerAccessibilityService : AccessibilityService() {
     }
 
     private fun checkAndStartService() {
-
+        if (!MemoCache.haveInit) {
+            MemoCache.init()
+        }
+        if (MemoCache.funcSwitch && !LockerService.isServiceRunning) {
+            LockerService.startService(this)
+        }
     }
 }

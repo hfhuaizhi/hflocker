@@ -59,7 +59,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="必备权限："
+        android:text="必要权限："
         android:textColor="#FF0000" />
 
     <com.hfhuaizhi.hflocker.view.SlideProcessView
@@ -87,5 +87,12 @@
         app:permission_closeable="false"
         app:permission_content="用于后台保活"
         app:permission_title="辅助功能无障碍权限" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_margin="16dp"
+        android:text="tips:为确保正常使用，建议开启app自启动并解除后台限制，可在手机自带“手机管家”软件中进行设置" />
 
 </LinearLayout>
