@@ -43,7 +43,6 @@ class MainActivity : AppCompatActivity() {
             AppConfig.wakeupTime = it
         }
         sw_main.setOnCheckedChangeListener { buttonView, isChecked ->
-            Log.e("hftest", "isChecked::$isChecked")
             if (isChecked) {
                 if (PermissionUtil.checkAlertWindowsPermission(this)) {
                     LockerService.startService(applicationContext)

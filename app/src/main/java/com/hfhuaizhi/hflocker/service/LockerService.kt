@@ -117,6 +117,7 @@ class LockerService : Service() {
             this,
             object : ScreenBroadcastReceiver.ScreenListener {
                 override fun on() {
+                    checkFloatShow()
                     synchronized(mWaitObject) {
                         mThreadPause = false
                         mWaitObject.notify()
@@ -131,14 +132,12 @@ class LockerService : Service() {
     }
 
     private fun checkFloatShow() {
-        Log.e("hftest", "checkFloat")
         mHandler.post {
             if (isInLockTime()) {
-                Log.e("hftest", "showFloat")
                 showFloat()
             } else {
-                Log.e("hftest", "hideFloat")
                 hideFloat()
+                hideTipsView()
             }
         }
     }
@@ -146,8 +145,6 @@ class LockerService : Service() {
     private fun isInLockTime(): Boolean {
         val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
         val minute = Calendar.getInstance().get(Calendar.MINUTE)
-        Log.e("hftest", "hour:$hour")
-        Log.e("hftest", "minute:$minute")
         var transHour = 0
         if (hour <= 8) {
             transHour = hour * 2 + 8
@@ -157,7 +154,6 @@ class LockerService : Service() {
         if (minute >= 30) {
             transHour++
         }
-        Log.e("hftest", "transHour:$transHour")
         return transHour in MemoCache.sleepTime until MemoCache.wakeupTime
     }
 
@@ -177,7 +173,6 @@ class LockerService : Service() {
     private fun showTipsView() {
         if (tipsViewShow) return
         tipsViewShow = true
-        Log.e("hftest", "showTipsView~~~~")
         tipsAnim.start()
         WindowManagerWrapper.addView(lockerNotifyView, floatTipsParam)
     }
@@ -194,6 +189,8 @@ class LockerService : Service() {
         SlideActionManager.unregister(this)
         isServiceRunning = false
         mThreadRunning = false
+        hideFloat()
+        hideTipsView()
         super.onDestroy()
     }
 
